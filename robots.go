@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-func landing(w http.ResponseWriter, r *http.Request) {
+func robotsHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "User-agent: *\nDisallow: /")
 }
 
 func main() {
-	http.HandleFunc("/robots.txt", landing)
+	http.HandleFunc("/robots.txt", robotsHandler)
 	http.ListenAndServe(":8081", nil)
 }
