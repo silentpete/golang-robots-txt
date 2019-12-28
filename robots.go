@@ -6,7 +6,7 @@ import (
 )
 
 func robotsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "User-agent: *\nDisallow: /")
+	fmt.Fprintf(w, "User-agent: *\nDisallow: /\n")
 }
 
 func main() {

@@ -1,10 +1,9 @@
 FROM golang as buildBinary
-WORKDIR /go/src/app
+WORKDIR /go/src/robots
 COPY "$PWD"/robots.go .
-RUN env GOOS=linux GOARCH=386 go build -v -o robots robots.go
+RUN env GOOS=linux GOARCH=386 go build -v
 
 FROM scratch
-WORKDIR /opt
-COPY --from=buildBinary /go/src/app/ .
+COPY --from=buildBinary /go/src/robots/robots /bin/robots
 EXPOSE 8081
-CMD ["/opt/robots"]
+ENTRYPOINT [ "/bin/robots" ]
